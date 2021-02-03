@@ -8,6 +8,7 @@ import { TutangaNavbarComponent } from './tutanga/tutanga-navbar/tutanga-navbar.
 import { TutangaFooterComponent } from './tutanga/tutanga-footer/tutanga-footer.component';
 import { TutangaNotfoundComponent } from './tutanga/tutanga-notfound/tutanga-notfound.component';
 import { TutangaProductosComponent } from './tutanga/tutanga-productos/tutanga-productos.component';
+import { TutangaContactComponent } from './tutanga/tutanga-contact/tutanga-contact.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { TutangaProductosComponent } from './tutanga/tutanga-productos/tutanga-p
     TutangaNavbarComponent,
     TutangaFooterComponent,
     TutangaNotfoundComponent,
-    TutangaProductosComponent
+    TutangaProductosComponent,
+    TutangaContactComponent
   ],
   imports: [
     BrowserModule,
