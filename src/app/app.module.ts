@@ -20,6 +20,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 
 import { AuthService } from './tutanga/services/auth.service';
+import { TutangaRegisterComponent } from './tutanga/tutanga-register/tutanga-register.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AuthService } from './tutanga/services/auth.service';
     TutangaNotfoundComponent,
     TutangaProductosComponent,
     TutangaContactComponent,
-    TutangaLoginComponent
+    TutangaLoginComponent,
+    TutangaRegisterComponent
   ],
   imports: [
     BrowserModule,
