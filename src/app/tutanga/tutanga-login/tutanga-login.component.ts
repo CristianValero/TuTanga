@@ -16,14 +16,12 @@ export class TutangaLoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.todoForm = this.formBuilder.group({
-      title: ['', Validators.required],
-      description: ['', Validators.required],
-      done: false
+      email: ['', Validators.required],
+      passwd: ['', Validators.required]
     });
   }
 
   public loginAttempt(): void {
-
   }
 
   public getTodoForm(): FormGroup {
