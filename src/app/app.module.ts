@@ -22,6 +22,8 @@ import { environment } from '../environments/environment';
 import { AuthService } from './tutanga/services/auth.service';
 import { TutangaRegisterComponent } from './tutanga/tutanga-register/tutanga-register.component';
 
+//SOY PAT
+
 @NgModule({
   declarations: [
     AppComponent,
