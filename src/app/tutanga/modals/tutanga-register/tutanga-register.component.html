@@ -1,1 +1,42 @@
-<p>tutanga-register works!</p>
+<!-- <div>
+    <div class="modal-header">
+        <h4 class="modal-title">Inicia sesión <i class="fa fa-user"></i></h4>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <form [formGroup]="getTodoForm()" (ngSubmit)="loginAttempt()">
+                <div class="form-group">
+                    <label for="email">Correo electrónico*</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                        </div>
+                        <input type="text" id="email" placeholder="Correo electrónico" class="form-control" formControlName="email"/>
+                    </div>
+                    <span style="color:Red;" *ngIf="getTodoForm().controls['email'].touched && getTodoForm().controls['email'].errors?.required">
+                        El correo es obligatorio.
+                   </span>
+                </div>
+                <div class="form-group">
+                    <label for="passwd">Contraseña*</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                        </div>
+                        <input type="password" id="passwd" placeholder="Contraseña" class="form-control" formControlName="passwd" />
+                    </div>
+                    <span style="color:Red;" *ngIf="getTodoForm().controls['passwd'].touched && getTodoForm().controls['passwd'].errors?.required">
+                        La contraseña es obligatoria.
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cancelar</button>
+        <button class="btn btn-warning" (click)="loginAttempt()" [disabled]="getTodoForm().invalid">Iniciar sesión</button>
+    </div>
+</div> -->
