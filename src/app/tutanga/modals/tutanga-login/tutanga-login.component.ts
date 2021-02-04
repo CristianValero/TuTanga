@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-tutanga-login',
@@ -14,7 +14,7 @@ export class TutangaLoginComponent implements OnInit {
 
   private todoForm: FormGroup;
 
-  constructor( private formBuilder: FormBuilder, public activeModal: NgbActiveModal, public authService: AuthService ) { }
+  constructor( private formBuilder: FormBuilder, public activeModal: NgbActiveModal, private authService: AuthService ) { }
 
   ngOnInit(): void {
     this.todoForm = this.formBuilder.group({
@@ -26,7 +26,7 @@ export class TutangaLoginComponent implements OnInit {
   public loginAttempt(): void {
     let email = this.todoForm.controls["email"].value;
     let passwd = this.todoForm.controls["passwd"].value;
-    this.authService.signUp(email, passwd);
+    this.authService.createUser(email, passwd)
     this.activeModal.close();
   }
 

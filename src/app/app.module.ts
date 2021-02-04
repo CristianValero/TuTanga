@@ -9,7 +9,8 @@ import { TutangaFooterComponent } from './tutanga/tutanga-footer/tutanga-footer.
 import { TutangaNotfoundComponent } from './tutanga/tutanga-notfound/tutanga-notfound.component';
 import { TutangaProductosComponent } from './tutanga/tutanga-productos/tutanga-productos.component';
 import { TutangaContactComponent } from './tutanga/tutanga-contact/tutanga-contact.component';
-import { TutangaLoginComponent } from './tutanga/tutanga-login/tutanga-login.component';
+import { TutangaLoginComponent } from './tutanga/modals/tutanga-login/tutanga-login.component';
+import { TutangaRegisterComponent } from './tutanga/modals/tutanga-register/tutanga-register.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -20,9 +21,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 
 import { AuthService } from './tutanga/services/auth.service';
-import { TutangaRegisterComponent } from './tutanga/tutanga-register/tutanga-register.component';
-
-//SOY PAT
 
 @NgModule({
   declarations: [
