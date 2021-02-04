@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { TutangaNavbarComponent } from './tutanga/tutanga-navbar/tutanga-navbar.component';
 import { TutangaFooterComponent } from './tutanga/tutanga-footer/tutanga-footer.component';
 import { TutangaNotfoundComponent } from './tutanga/tutanga-notfound/tutanga-notfound.component';
-import { TutangaProductosComponent } from './tutanga/tutanga-productos/tutanga-productos.component';
+import { TutangaProductsComponent } from './tutanga/tutanga-products/tutanga-products.component';
 import { TutangaContactComponent } from './tutanga/tutanga-contact/tutanga-contact.component';
 import { TutangaLoginComponent } from './tutanga/modals/tutanga-login/tutanga-login.component';
 import { TutangaRegisterComponent } from './tutanga/modals/tutanga-register/tutanga-register.component';
@@ -28,7 +28,7 @@ import { AuthService } from './tutanga/services/auth.service';
     TutangaNavbarComponent,
     TutangaFooterComponent,
     TutangaNotfoundComponent,
-    TutangaProductosComponent,
+    TutangaProductsComponent,
     TutangaContactComponent,
     TutangaLoginComponent,
     TutangaRegisterComponent

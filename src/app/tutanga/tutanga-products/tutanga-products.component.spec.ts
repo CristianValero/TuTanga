@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TutangaProductosComponent } from './tutanga-productos.component';
+import { TutangaProductsComponent } from './tutanga-products.component';
 
 describe('TutangaProductosComponent', () => {
-  let component: TutangaProductosComponent;
-  let fixture: ComponentFixture<TutangaProductosComponent>;
+  let component: TutangaProductsComponent;
+  let fixture: ComponentFixture<TutangaProductsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TutangaProductosComponent ]
+      declarations: [ TutangaProductsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TutangaProductosComponent);
+    fixture = TestBed.createComponent(TutangaProductsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
