@@ -10,6 +10,7 @@ export class TutangaProductsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }
