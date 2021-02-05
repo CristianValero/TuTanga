@@ -18,6 +18,7 @@ export class TutangaProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.database.getProducts().subscribe(response => {
+      this.products = [];
       response.docs.forEach(value => {
         let data = value.data();
         let product: Product = {
