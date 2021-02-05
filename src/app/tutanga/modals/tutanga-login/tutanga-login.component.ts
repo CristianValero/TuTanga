@@ -16,8 +16,11 @@ import { TutangaRegisterComponent } from '../tutanga-register/tutanga-register.c
 export class TutangaLoginComponent implements OnInit {
 
   private todoForm: FormGroup;
+  private dataValid: boolean;
 
-  constructor( private modalService: NgbModal, private formBuilder: FormBuilder, public activeModal: NgbActiveModal, private authService: AuthService ) { }
+  constructor( private modalService: NgbModal, private formBuilder: FormBuilder, public activeModal: NgbActiveModal, private authService: AuthService ) {
+    this.dataValid = true;
+  }
 
   ngOnInit(): void {
     this.todoForm = this.formBuilder.group({
@@ -29,8 +32,14 @@ export class TutangaLoginComponent implements OnInit {
   public loginAttempt(): void {
     let email = this.todoForm.controls["email"].value;
     let passwd = this.todoForm.controls["passwd"].value;
-    this.authService.createUser(email, passwd)
-    this.activeModal.close();
+
+    this.authService.logIn(email, passwd).then((message) => {
+      console.log("Paco: -> " + message);
+      this.activeModal.close();
+    }).catch((errMsg) => {
+      console.log("Paco: -> " + errMsg);
+      this.dataValid = true;
+    });
   }
 
   public openRegisterModal(): void {
@@ -40,6 +49,10 @@ export class TutangaLoginComponent implements OnInit {
 
   public getTodoForm(): FormGroup {
     return this.todoForm;
+  }
+
+  public isDataValid(): boolean {
+    return this.dataValid;
   }
 
 }

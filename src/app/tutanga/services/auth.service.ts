@@ -22,11 +22,24 @@ export class AuthService {
     });
    }
 
-   public createUser(email: string, password: string): void {
-     this.afAuth.createUserWithEmailAndPassword(email, password).then((result) => {
-        result.user.sendEmailVerification().then(() => {
-          console.log('User registered OK.');
-        });
+   public createUser(email: string, password: string): Promise<String> {
+     return new Promise((resolve, reject) => {
+       this.afAuth.createUserWithEmailAndPassword(email, password).then(result => {
+        result.user.sendEmailVerification();
+        resolve("OK");
+       }).catch(error => {
+         reject(error.message);
+       });
+     });
+   }
+
+   public logIn(email: string, password:string): Promise<String> {
+     return new Promise((resolve, reject) => {
+       this.afAuth.signInWithEmailAndPassword(email, password).then((res) => {
+        resolve("OK");
+       }).catch((error) => {
+        reject(error.message);
+       });
      });
    }
 
@@ -35,8 +48,6 @@ export class AuthService {
    }
 
    public signOut(): void {
-    this.afAuth.signOut().then(() => {
-      console.log('User logout OK.');
-    });
+    this.afAuth.signOut();
   }
 }
