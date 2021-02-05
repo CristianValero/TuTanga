@@ -21,6 +21,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 
 import { AuthService } from './tutanga/services/auth.service';
+import { DatabaseService } from './tutanga/services/database.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { AuthService } from './tutanga/services/auth.service';
     AngularFireAuthModule,
     AngularFirestoreModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, DatabaseService],
   bootstrap: [AppComponent],
   entryComponents: [TutangaLoginComponent]
 })

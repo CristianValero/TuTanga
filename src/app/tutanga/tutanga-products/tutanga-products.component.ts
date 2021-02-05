@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { DatabaseService } from '../services/database.service';
+import { Product } from '../services/product';
+
 @Component({
   selector: 'app-tutanga-products',
   templateUrl: './tutanga-products.component.html',
@@ -7,10 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TutangaProductsComponent implements OnInit {
 
-  constructor() { }
+  private products: Array<Product>;
+
+  constructor( private database: DatabaseService ) { 
+    this.products = [];
+  }
 
   ngOnInit(): void {
-    
+    this.database.getProducts().subscribe(response => {
+      response.docs.forEach(value => {
+        let data = value.data();
+        let product: Product = {
+          name: data.name,
+          description: data.description,
+          image: data.img,
+          price: data.price
+        };
+        this.products.push(product);
+      });
+    });
   }
 
 }
