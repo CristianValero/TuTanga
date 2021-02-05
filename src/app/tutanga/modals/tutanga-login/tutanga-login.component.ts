@@ -38,7 +38,7 @@ export class TutangaLoginComponent implements OnInit {
       this.activeModal.close();
     }).catch((errMsg) => {
       console.log("Paco: -> " + errMsg);
-      this.dataValid = true;
+      this.dataValid = false;
     });
   }
 
