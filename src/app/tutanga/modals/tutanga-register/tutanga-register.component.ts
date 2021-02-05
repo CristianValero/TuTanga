@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-tutanga-register',
   templateUrl: './tutanga-register.component.html',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TutangaRegisterComponent implements OnInit {
 
-  constructor() { }
+  private form: FormGroup;
+
+  constructor( private formBuilder: FormBuilder, public activeModal: NgbActiveModal ) { }
 
   ngOnInit(): void {
+  }
+
+  public getForm(): FormGroup {
+    return this.form;
   }
 
 }
