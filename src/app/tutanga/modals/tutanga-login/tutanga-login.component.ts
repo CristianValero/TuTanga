@@ -34,10 +34,9 @@ export class TutangaLoginComponent implements OnInit {
     let passwd = this.todoForm.controls["passwd"].value;
 
     this.authService.logIn(email, passwd).then((message) => {
-      console.log("Paco: -> " + message);
       this.activeModal.close();
     }).catch((errMsg) => {
-      console.log("Paco: -> " + errMsg);
+      console.log(errMsg);
       this.dataValid = false;
     });
   }
