@@ -1,10 +1,11 @@
 import { Injectable, NgZone } from '@angular/core';
 
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreDocument, DocumentReference } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
 import { Observable } from 'rxjs';
 
 import { Product } from './product';
+import { Contact } from './contact';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +16,9 @@ export class DatabaseService {
 
   public getProducts(): Observable<firebase.default.firestore.QuerySnapshot> {
     return this.database.collection<Product>('products', ref => ref.orderBy('name', 'desc')).get();
+  }
+
+  public saveContactAppeal(contact: Contact): Promise<DocumentReference> {
+    return this.database.collection('appeals').add(contact);
   }
 }

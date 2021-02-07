@@ -42,6 +42,7 @@
                             </div>
                             <div class="mx-auto">
                                 <button (click)="sendContactRequest()" [disabled]="getForm().invalid" type="button" class="btn btn-warning text-right">Enviar</button>
+                                <span class="text-success" *ngIf="isSended()"> ¡Solicitud enviada correctamente! </span>
                             </div>
                         </form>
                     </div>
