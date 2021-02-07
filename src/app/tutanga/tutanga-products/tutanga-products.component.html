@@ -47,7 +47,7 @@
                                 <p class="card-text">{{product.description}}</p>
                                 <div class="row">
                                     <div class="col">
-                                        <button type="button" class="btn btn-warning btn-block">
+                                        <button type="button" class="btn btn-warning btn-block" (click)="addToCart(product)">
                                             <i class="fa fa-shopping-cart"></i><strong> {{product.price}} € </strong>
                                         </button>
                                     </div>

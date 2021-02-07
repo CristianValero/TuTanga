@@ -49,4 +49,8 @@ export class TutangaProductsComponent implements OnInit {
     return this.randomProduct;
   }
 
+  public addToCart(product: Product): void {
+    console.log(product.name);
+  }
+
 }
