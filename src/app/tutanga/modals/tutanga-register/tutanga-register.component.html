@@ -5,17 +5,10 @@
         <span aria-hidden="true">&times;</span>
         </button>
     </div>
-</div>
-<!-- <div>
-    <div class="modal-header">
-        <h4 class="modal-title">Inicia sesión <i class="fa fa-user"></i></h4>
-        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
     <div class="modal-body">
+        <p id="incorrect-credentials" *ngIf="!isDataValid()">¡Upsss! Revisa que todos tus datos sean correctos.</p>
         <div class="container">
-            <form [formGroup]="getTodoForm()" (ngSubmit)="loginAttempt()">
+            <form [formGroup]="getForm()" (ngSubmit)="registerAttempt()">
                 <div class="form-group">
                     <label for="email">Correo electrónico*</label>
                     <div class="input-group">
@@ -24,7 +17,7 @@
                         </div>
                         <input type="text" id="email" placeholder="Correo electrónico" class="form-control" formControlName="email"/>
                     </div>
-                    <span style="color:Red;" *ngIf="getTodoForm().controls['email'].touched && getTodoForm().controls['email'].errors?.required">
+                    <span style="color:Red;" *ngIf="getForm().controls['email'].touched && getForm().controls['email'].errors?.required">
                         El correo es obligatorio.
                    </span>
                 </div>
@@ -36,8 +29,20 @@
                         </div>
                         <input type="password" id="passwd" placeholder="Contraseña" class="form-control" formControlName="passwd" />
                     </div>
-                    <span style="color:Red;" *ngIf="getTodoForm().controls['passwd'].touched && getTodoForm().controls['passwd'].errors?.required">
+                    <span style="color:Red;" *ngIf="getForm().controls['passwd'].touched && getForm().controls['passwd'].errors?.required">
                         La contraseña es obligatoria.
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="passwd">Repetir contraseña*</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                        </div>
+                        <input type="password" id="passwd2" placeholder="Contraseña" class="form-control" formControlName="passwd2" />
+                    </div>
+                    <span style="color:Red;" *ngIf="getForm().controls['passwd2'].touched && getForm().controls['passwd2'].errors?.required">
+                        Debes volver a escribir la contraseña
                     </span>
                 </div>
             </form>
@@ -45,6 +50,6 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cancelar</button>
-        <button class="btn btn-warning" (click)="loginAttempt()" [disabled]="getTodoForm().invalid">Iniciar sesión</button>
+        <button class="btn btn-warning" (click)="registerAttempt()" [disabled]="getForm().invalid">Registrarme</button>
     </div>
-</div> -->
+</div>
