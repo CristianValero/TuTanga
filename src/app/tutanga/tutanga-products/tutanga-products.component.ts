@@ -32,4 +32,13 @@ export class TutangaProductsComponent implements OnInit {
     });
   }
 
+  public getProducts(): Array<Product> {
+    return this.products;
+  }
+
+  public getRandomProduct(): Product {
+    const random = Math.floor(Math.random() * this.products.length);
+    return this.products[random];
+  }
+
 }

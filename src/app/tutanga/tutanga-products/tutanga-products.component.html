@@ -36,15 +36,18 @@
             </div>
             <div class="col">
                 <div class="row">
-                    <div class="col-12 col-md-6 col-lg-4">
+                    <div *ngIf="getProducts().length == 0" class="spinner-border" role="status" id="loading">
+                        <p class="sr-only">Loading...</p>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4" *ngFor="let product of getProducts();">
                         <div class="card">
-                            <img class="card-img-top" src="https://dummyimage.com/600x400/55595c/fff" alt="Card image cap">
+                            <img class="card-img-top" src={{product.image}} alt="Card image cap">
                             <div class="card-body">
-                                <h4 class="card-title"><a href="product.html" title="View Product">Product title</a></h4>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <h4 class="card-title"><a routerLink="/" title="View Product">{{product.name}}</a></h4>
+                                <p class="card-text">{{product.description}}</p>
                                 <div class="row">
                                     <div class="col">
-                                        <p class="btn btn-danger btn-block">99.00 $</p>
+                                        <p class="btn btn-danger btn-block">{{product.price}} $</p>
                                     </div>
                                     <div class="col">
                                         <button type="button" class="btn btn-warning btn-block">Comprar</button>
