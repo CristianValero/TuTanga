@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 main {
     margin-top: 20px;
     margin-bottom: 30px;
@@ -61,4 +65,13 @@ main {
     margin: 0px auto;
     text-align: center;
     margin-top: 100px;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.product-model {
+    margin-bottom: 10px;
 }

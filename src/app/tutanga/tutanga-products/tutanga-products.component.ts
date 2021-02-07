@@ -11,9 +11,12 @@ import { Product } from '../services/product';
 export class TutangaProductsComponent implements OnInit {
 
   private products: Array<Product>;
+  private randomProduct: Product;
+  private ready: boolean;
 
   constructor( private database: DatabaseService ) { 
     this.products = [];
+    this.ready = false;
   }
 
   ngOnInit(): void {
@@ -29,7 +32,13 @@ export class TutangaProductsComponent implements OnInit {
         };
         this.products.push(product);
       });
+      this.randomProduct = this.products[Math.floor(Math.random() * this.products.length)];
+      this.ready = true;
     });
+  }
+
+  public isReady(): boolean {
+    return this.ready;
   }
 
   public getProducts(): Array<Product> {
@@ -37,8 +46,7 @@ export class TutangaProductsComponent implements OnInit {
   }
 
   public getRandomProduct(): Product {
-    const random = Math.floor(Math.random() * this.products.length);
-    return this.products[random];
+    return this.randomProduct;
   }
 
 }

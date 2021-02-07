@@ -24,13 +24,13 @@
                         <li class="list-group-item"><a href="category.html">Juguetes sexuales</a></li>
                     </ul>
                 </div>
-                <div class="card bg-light mb-3">
+                <div class="card bg-light mb-3" *ngIf="isReady()">
                     <div class="card-header bg-warning text-white text-uppercase"><i class="fa fa-tag"></i> TOP VENTAS</div>
                     <div class="card-body">
-                        <img class="img-fluid" src="https://dummyimage.com/600x400/55595c/fff" />
-                        <h5 class="card-title" id="title-last-product">Product title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <p class="bloc_left_price">99.00 $</p>
+                        <img class="img-fluid" src={{getRandomProduct().image}} />
+                        <h5 class="card-title text-warning" id="title-last-product">{{getRandomProduct().name}}</h5>
+                        <p class="card-text">{{getRandomProduct().description}}</p>
+                        <p class="bloc_left_price">{{getRandomProduct().price}} $</p>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                     <div *ngIf="getProducts().length == 0" class="spinner-border" role="status" id="loading">
                         <p class="sr-only">Loading...</p>
                     </div>
-                    <div class="col-12 col-md-6 col-lg-4" *ngFor="let product of getProducts();">
+                    <div class="col-12 col-md-6 col-lg-4 product-model" *ngFor="let product of getProducts();">
                         <div class="card">
                             <img class="card-img-top" src={{product.image}} alt="Card image cap">
                             <div class="card-body">
@@ -47,10 +47,9 @@
                                 <p class="card-text">{{product.description}}</p>
                                 <div class="row">
                                     <div class="col">
-                                        <p class="btn btn-danger btn-block">{{product.price}} $</p>
-                                    </div>
-                                    <div class="col">
-                                        <button type="button" class="btn btn-warning btn-block">Comprar</button>
+                                        <button type="button" class="btn btn-warning btn-block">
+                                            <i class="fa fa-shopping-cart"></i><strong> {{product.price}} € </strong>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
