@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from "@angular/router";
 
-import { Contact } from '../services/contact';
+import { Contact } from '../services/interfaces/contact';
 import { DatabaseService } from '../services/database.service'
 
 @Component({

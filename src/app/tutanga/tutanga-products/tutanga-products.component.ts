@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { DatabaseService } from '../services/database.service';
-import { Product } from '../services/product';
+import { Product } from '../services/interfaces/product';
 
 @Component({
   selector: 'app-tutanga-products',
