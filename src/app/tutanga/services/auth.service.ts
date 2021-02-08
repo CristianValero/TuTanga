@@ -16,7 +16,7 @@ export class AuthService {
     this.afAuth.user.subscribe(user => {
       if ( user ) {
         this.logged = true;
-        this.router.navigate(["/"]);
+        //this.router.navigate(["/"]);
       } else {
         this.logged = false;
       }
