@@ -9,7 +9,7 @@ import { Router } from "@angular/router";
 })
 export class AuthService {
 
-  private logged: any;
+  private logged: boolean;
 
   constructor( public afs: AngularFirestore, public afAuth: AngularFireAuth, public router: Router, public ngZone: NgZone ) {
     this.logged = false;
