@@ -11,6 +11,7 @@ import { TutangaProductsComponent } from './tutanga/tutanga-products/tutanga-pro
 import { TutangaContactComponent } from './tutanga/tutanga-contact/tutanga-contact.component';
 import { TutangaLoginComponent } from './tutanga/modals/tutanga-login/tutanga-login.component';
 import { TutangaRegisterComponent } from './tutanga/modals/tutanga-register/tutanga-register.component';
+import { TutangaCartComponent } from './tutanga/tutanga-cart/tutanga-cart.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -23,6 +24,7 @@ import { environment } from '../environments/environment';
 import { AuthService } from './tutanga/services/auth.service';
 import { DatabaseService } from './tutanga/services/database.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,8 @@ import { DatabaseService } from './tutanga/services/database.service';
     TutangaProductsComponent,
     TutangaContactComponent,
     TutangaLoginComponent,
-    TutangaRegisterComponent
+    TutangaRegisterComponent,
+    TutangaCartComponent
   ],
   imports: [
     BrowserModule,
