@@ -59,6 +59,8 @@ export class TutangaCartComponent implements OnInit {
       });
       this.products = auxProducts;
       this.totalPrice = price;
+      
+      this.database.setAmountProductsInCart(this.products.length);
     });
   }
 

@@ -25,14 +25,13 @@ export class TutangaNavbarComponent implements OnInit {
     this.authService.isLogged().subscribe(value => {
       if ( value ) {
         this.logged = true;
-        this.database.getProductsInCart().subscribe(response => {
-          response.docs.forEach(value => {
-            this.cartAmount += 1;
-          });
-        });
       } else {
         this.logged = false;
       }
+    });
+
+    this.database.getAmountProductsInCart().subscribe(amount => {
+      this.cartAmount = amount;
     });
   }
 
