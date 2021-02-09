@@ -18,10 +18,16 @@ export class TutangaProductsComponent implements OnInit {
   private products: Array<Product>;
   private randomProduct: Product;
   private ready: boolean;
+  private logged: boolean;
 
   constructor( private modalService: NgbModal, private database: DatabaseService, private auth: AuthService ) { 
     this.products = [];
     this.ready = false;
+    this.logged = false;
+
+    this.auth.isLogged().subscribe(value => {
+      this.logged = value;
+    });
   }
 
   ngOnInit(): void {
@@ -56,7 +62,7 @@ export class TutangaProductsComponent implements OnInit {
   }
 
   public addToCart(product: Product): void {
-    if ( this.auth.isLogged() ) {
+    if ( this.logged ) {
       this.database.saveProductCart(product).then(resolve => {
         console.log("Product added to the cart correctly!");
         this.modalService.open(TutangaSuccessComponent);
