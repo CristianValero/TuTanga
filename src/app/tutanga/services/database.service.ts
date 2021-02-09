@@ -4,8 +4,8 @@ import { AngularFirestore, AngularFirestoreDocument, DocumentReference } from '@
 import { Router } from "@angular/router";
 import { Observable } from 'rxjs';
 
-import { Product } from './interfaces/product';
-import { Contact } from './interfaces/contact';
+import { Product } from '../interfaces/product';
+import { Contact } from '../interfaces/contact';
 
 @Injectable({
   providedIn: 'root'
