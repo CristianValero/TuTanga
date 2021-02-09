@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { TutangaLoginComponent } from '../modals/tutanga-login/tutanga-login.component';
+import { TutangaSuccessComponent } from '../modals/tutanga-success/tutanga-success.component';
 
 import { DatabaseService } from '../services/database.service';
 import { AuthService } from '../services/auth.service';
@@ -58,6 +59,7 @@ export class TutangaProductsComponent implements OnInit {
     if ( this.auth.isLogged() ) {
       this.database.saveProductCart(product).then(resolve => {
         console.log("Product added to the cart correctly!");
+        this.modalService.open(TutangaSuccessComponent);
       }).catch(error => {
         console.log(error);
       });

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
-import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 
 import { Product } from '../interfaces/product';
 
@@ -23,14 +22,13 @@ export class TutangaCartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.authService.getEmail.
-
-
-    if ( !this.authService.isLogged() ) {
-      this.router.navigate(["/"]);
-    } else {
-      this.refreshCartProducts();
-    }
+    this.authService.isLogged().subscribe(value => {
+      if ( !value ) {
+        this.router.navigate(["/"]);
+      } else {
+        this.refreshCartProducts();
+      }
+    });
   }
 
   public deleteFromCart(product: Product) {
@@ -43,8 +41,8 @@ export class TutangaCartComponent implements OnInit {
   }
 
   private refreshCartProducts(): void {
-    this.products = [];
-    this.totalPrice = 0;
+    let auxProducts: Array<Product> = [];
+    let price = 0;
 
     this.database.getProductsInCart().subscribe(response => {
       response.docs.forEach(value => {
@@ -56,9 +54,11 @@ export class TutangaCartComponent implements OnInit {
           image: data.img,
           price: data.price
         };
-        this.products.push(product);
-        this.totalPrice += parseInt(product.price);
+        auxProducts.push(product);
+        price += parseInt(product.price);
       });
+      this.products = auxProducts;
+      this.totalPrice = price;
     });
   }
 
@@ -68,6 +68,10 @@ export class TutangaCartComponent implements OnInit {
 
   public getProducts(): Array<Product> {
     return this.products;
+  }
+
+  public getTotalSize(): number {
+    return this.products.length;
   }
 
 }

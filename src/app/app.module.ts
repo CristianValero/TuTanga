@@ -12,6 +12,7 @@ import { TutangaContactComponent } from './tutanga/tutanga-contact/tutanga-conta
 import { TutangaLoginComponent } from './tutanga/modals/tutanga-login/tutanga-login.component';
 import { TutangaRegisterComponent } from './tutanga/modals/tutanga-register/tutanga-register.component';
 import { TutangaCartComponent } from './tutanga/tutanga-cart/tutanga-cart.component';
+import { TutangaSuccessComponent } from './tutanga/modals/tutanga-success/tutanga-success.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -35,7 +36,8 @@ import { DatabaseService } from './tutanga/services/database.service';
     TutangaContactComponent,
     TutangaLoginComponent,
     TutangaRegisterComponent,
-    TutangaCartComponent
+    TutangaCartComponent,
+    TutangaSuccessComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +50,6 @@ import { DatabaseService } from './tutanga/services/database.service';
   ],
   providers: [AuthService, DatabaseService],
   bootstrap: [AppComponent],
-  entryComponents: [TutangaLoginComponent]
+  entryComponents: [TutangaLoginComponent, TutangaRegisterComponent, TutangaSuccessComponent]
 })
 export class AppModule { }
