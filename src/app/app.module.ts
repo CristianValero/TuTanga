@@ -22,8 +22,9 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 
-import { AuthService } from './tutanga/services/auth.service';
-import { DatabaseService } from './tutanga/services/database.service';
+import { AuthService } from './tutanga/services/auth/auth.service';
+import { DatabaseService } from './tutanga/services/database/database.service';
+import { ProviderService } from './tutanga/services/provider/provider.service';
 
 
 @NgModule({
@@ -48,8 +49,16 @@ import { DatabaseService } from './tutanga/services/database.service';
     AngularFireAuthModule,
     AngularFirestoreModule
   ],
-  providers: [AuthService, DatabaseService],
+  providers: [
+    AuthService, 
+    DatabaseService, 
+    ProviderService
+  ],
   bootstrap: [AppComponent],
-  entryComponents: [TutangaLoginComponent, TutangaRegisterComponent, TutangaSuccessComponent]
+  entryComponents: [
+    TutangaLoginComponent, 
+    TutangaRegisterComponent, 
+    TutangaSuccessComponent
+  ]
 })
 export class AppModule { }

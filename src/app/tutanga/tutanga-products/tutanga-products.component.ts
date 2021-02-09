@@ -4,8 +4,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TutangaLoginComponent } from '../modals/tutanga-login/tutanga-login.component';
 import { TutangaSuccessComponent } from '../modals/tutanga-success/tutanga-success.component';
 
-import { DatabaseService } from '../services/database.service';
-import { AuthService } from '../services/auth.service';
+import { DatabaseService } from '../services/database/database.service';
+import { AuthService } from '../services/auth/auth.service';
+import { ProviderService } from '../services/provider/provider.service';
+
 import { Product } from '../interfaces/product';
 
 @Component({
@@ -17,10 +19,11 @@ export class TutangaProductsComponent implements OnInit {
 
   private products: Array<Product>;
   private randomProduct: Product;
+
   private ready: boolean;
   private logged: boolean;
 
-  constructor( private modalService: NgbModal, private database: DatabaseService, private auth: AuthService ) { 
+  constructor( private modalService: NgbModal, private database: DatabaseService, private auth: AuthService, private provider: ProviderService ) { 
     this.products = [];
     this.ready = false;
     this.logged = false;
@@ -65,6 +68,8 @@ export class TutangaProductsComponent implements OnInit {
     if ( this.logged ) {
       this.database.saveProductCart(product).then(resolve => {
         console.log("Product added to the cart correctly!");
+
+        this.provider.setSuccessMessage("Tu producto se ha añadido al carrito correctamente.");
         this.modalService.open(TutangaSuccessComponent);
       }).catch(error => {
         console.log(error);

@@ -3,10 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { TutangaLoginComponent } from '../modals/tutanga-login/tutanga-login.component';
-import { TutangaCartComponent } from '../tutanga-cart/tutanga-cart.component';
 
-import { AuthService } from '../services/auth.service';
-import { DatabaseService } from '../services/database.service';
+import { AuthService } from '../services/auth/auth.service';
+import { DatabaseService } from '../services/database/database.service';
 
 @Component({
   selector: 'app-tutanga-navbar',

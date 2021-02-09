@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Provider } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from "@angular/router";
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+import { TutangaSuccessComponent } from '../modals/tutanga-success/tutanga-success.component';
 
 import { Contact } from '../interfaces/contact';
-import { DatabaseService } from '../services/database.service'
+
+import { ProviderService } from '../services/provider/provider.service';
+import { DatabaseService } from '../services/database/database.service'
 
 @Component({
   selector: 'app-tutanga-contact',
@@ -15,7 +19,7 @@ export class TutangaContactComponent implements OnInit {
   private form: FormGroup;
   private sended: boolean;
 
-  constructor( private formBuilder: FormBuilder, private database: DatabaseService ) {
+  constructor( private modalService: NgbModal, private formBuilder: FormBuilder, private database: DatabaseService, private provider: ProviderService ) {
     this.sended = false; 
   }
 
@@ -34,8 +38,9 @@ export class TutangaContactComponent implements OnInit {
 
     let contact: Contact = { name, email, message };
     this.database.saveContactAppeal(contact).then(resolve => {
+      this.provider.setSuccessMessage("Se ha enviado tu solicitud. En menos de 24 horas recibirás una respuesta.");
+      this.modalService.open(TutangaSuccessComponent);
       this.form.reset();
-      this.sended = true;
     });
   }
 

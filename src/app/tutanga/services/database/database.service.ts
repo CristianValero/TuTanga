@@ -1,12 +1,12 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import { AngularFirestore, AngularFirestoreDocument, DocumentReference } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-import { Product } from '../interfaces/product';
-import { Contact } from '../interfaces/contact';
+import { Product } from '../../interfaces/product';
+import { Contact } from '../../interfaces/contact';
 
-import { AuthService } from './auth.service';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'

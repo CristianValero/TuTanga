@@ -3,8 +3,8 @@ import { Router } from "@angular/router";
 
 import { Product } from '../interfaces/product';
 
-import { AuthService } from '../services/auth.service';
-import { DatabaseService } from '../services/database.service';
+import { AuthService } from '../services/auth/auth.service';
+import { DatabaseService } from '../services/database/database.service';
 
 @Component({
   selector: 'app-tutanga-cart',
@@ -33,7 +33,6 @@ export class TutangaCartComponent implements OnInit {
 
   public deleteFromCart(product: Product) {
     this.database.deleteProductFromCart(product).then(resolve => {
-      console.log("nice chanclo!");
       this.refreshCartProducts();
     }).catch(error => {
       console.log(error);
@@ -54,7 +53,6 @@ export class TutangaCartComponent implements OnInit {
           image: data.image,
           price: data.price
         };
-        console.log(product.image);
         auxProducts.push(product);
         price += parseInt(product.price);
       });

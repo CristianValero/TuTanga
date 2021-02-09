@@ -6,7 +6,7 @@
             </div>		
             <div class="modal-body text-center">
                 <h3>¡Fantástico!</h3>	
-                <p>Tu producto se ha añadido al carrito correctamente.</p>
+                <p>{{getSuccessMessage()}}</p>
                 <button class="btn btn-warning" data-dismiss="modal" (click)="activeModal.close('Close click')">
                     <span>Aceptar</span>
                 </button>
