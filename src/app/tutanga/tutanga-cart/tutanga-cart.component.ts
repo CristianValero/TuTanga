@@ -51,15 +51,16 @@ export class TutangaCartComponent implements OnInit {
           id: value.id,
           name: data.name,
           description: data.description,
-          image: data.img,
+          image: data.image,
           price: data.price
         };
+        console.log(product.image);
         auxProducts.push(product);
         price += parseInt(product.price);
       });
       this.products = auxProducts;
       this.totalPrice = price;
-      
+
       this.database.setAmountProductsInCart(this.products.length);
     });
   }
