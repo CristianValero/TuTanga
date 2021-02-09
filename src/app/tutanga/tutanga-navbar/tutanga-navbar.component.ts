@@ -6,6 +6,7 @@ import { TutangaLoginComponent } from '../modals/tutanga-login/tutanga-login.com
 import { TutangaCartComponent } from '../tutanga-cart/tutanga-cart.component';
 
 import { AuthService } from '../services/auth.service';
+import { DatabaseService } from '../services/database.service';
 
 @Component({
   selector: 'app-tutanga-navbar',
@@ -14,9 +15,32 @@ import { AuthService } from '../services/auth.service';
 })
 export class TutangaNavbarComponent implements OnInit {
 
-  constructor( private modalService: NgbModal, public authService: AuthService ) { }
+  private cartAmount: number;
+  private logged: boolean;
+
+  constructor( private modalService: NgbModal, public authService: AuthService, private database: DatabaseService ) {
+    this.cartAmount = 0;
+    this.logged = false;
+
+    this.authService.isLogged().subscribe(value => {
+      if ( value ) {
+        this.logged = true;
+        this.database.getProductsInCart().subscribe(response => {
+          response.docs.forEach(value => {
+            this.cartAmount += 1;
+          });
+        });
+      } else {
+        this.logged = false;
+      }
+    });
+  }
 
   ngOnInit(): void { }
+
+  public getCartAmount(): number {
+    return this.cartAmount;
+  }
 
   public openLoginModal(): void {
     this.modalService.open(TutangaLoginComponent);
@@ -29,6 +53,10 @@ export class TutangaNavbarComponent implements OnInit {
 
   private handleModalTodoFormClose(): void {
     //alert('se ha cerrado el modal');
+  }
+
+  public isLogged(): boolean {
+    return this.logged;
   }
 
 }

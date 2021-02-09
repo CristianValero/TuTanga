@@ -1,7 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 
 import { AngularFirestore, AngularFirestoreDocument, DocumentReference } from '@angular/fire/firestore';
-import { Router } from "@angular/router";
 import { Observable } from 'rxjs';
 
 import { Product } from '../interfaces/product';
@@ -31,5 +30,9 @@ export class DatabaseService {
   public saveProductCart(product: Product): Promise<DocumentReference> {
     let email = this.auth.getEmail();
     return this.database.collection(email).add(product);
+  }
+
+  public deleteProductFromCart(product: Product): Promise<void> {
+    return this.database.collection(this.auth.getEmail()).doc(product.id).delete();
   }
 }

@@ -23,15 +23,15 @@
                             </button>
                         </div>
                     </div>
-                    <a *ngIf="!authService.isLogged()" class="btn btn-warning btn-sm ml-3" (click)="openLoginModal()">
+                    <a *ngIf="!isLogged()" class="btn btn-warning btn-sm ml-3" (click)="openLoginModal()">
                         <i class="fa fa-user"></i> Inicia sesión
                     </a>
-                    <a *ngIf="authService.isLogged()" class="btn btn-warning btn-sm ml-3" (click)="closeSession()">
+                    <a *ngIf="isLogged()" class="btn btn-warning btn-sm ml-3" (click)="closeSession()">
                         <strong id="show-email">{{authService.getEmail()}}</strong> | <i class="fa fa-power-off"></i> 
                     </a>
-                    <a *ngIf="authService.isLogged()" class="btn btn-warning btn-sm ml-3" routerLink="/carrito">
+                    <a *ngIf="isLogged()" class="btn btn-warning btn-sm ml-3" routerLink="/carrito">
                         <i class="fa fa-shopping-cart"></i> Carrito
-                        <span class="badge badge-light" id="cartCount">0</span>
+                        <span class="badge badge-light" id="cartCount">{{getCartAmount()}}</span>
                     </a>
                 </form>
             </div>

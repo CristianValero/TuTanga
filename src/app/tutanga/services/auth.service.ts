@@ -3,24 +3,25 @@ import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private logged: boolean;
+  private logged: BehaviorSubject<boolean>;
   private email: string;
 
-  constructor( public afs: AngularFirestore, public afAuth: AngularFireAuth, public router: Router, public ngZone: NgZone ) {
-    this.logged = false;
+  constructor( public afs: AngularFirestore, public afAuth: AngularFireAuth, public router: Router ) {
+    this.logged = new BehaviorSubject<boolean>(false);
+
     this.afAuth.user.subscribe(user => {
       if ( user ) {
-        this.logged = true;
         this.email = user.email;
-        //this.router.navigate(["/"]);
+        this.logged.next(true);
       } else {
-        this.logged = false;
+        this.logged.next(false);
         this.email = null;
       }
     });
@@ -51,7 +52,7 @@ export class AuthService {
      return this.email;
    }
 
-   public isLogged(): any {
+   public isLogged(): Observable<boolean> {
      return this.logged;
    }
 

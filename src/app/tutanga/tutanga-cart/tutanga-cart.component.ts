@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
+import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 
 import { Product } from '../interfaces/product';
 
@@ -14,42 +15,59 @@ import { DatabaseService } from '../services/database.service';
 export class TutangaCartComponent implements OnInit {
 
   private products: Array<Product>;
+  private totalPrice: number;
 
   constructor( private router: Router, private authService: AuthService, private database: DatabaseService ) {
     this.products = [];
-    if ( this.authService.isLogged() ) {
-      this.database.getProductsInCart().subscribe(response => {
-        response.docs.forEach(value => {
-          let data = value.data();
-          let product: Product = {
-            name: data.name,
-            description: data.description,
-            image: data.img,
-            price: data.price
-          };
-          this.products.push(product);
-          console.log(product.name);
-        });
-      });
-    }
+    this.totalPrice = 0;
   }
 
   ngOnInit(): void {
+    //this.authService.getEmail.
+
+
     if ( !this.authService.isLogged() ) {
       this.router.navigate(["/"]);
+    } else {
+      this.refreshCartProducts();
     }
   }
 
   public deleteFromCart(product: Product) {
+    this.database.deleteProductFromCart(product).then(resolve => {
+      console.log("nice chanclo!");
+      this.refreshCartProducts();
+    }).catch(error => {
+      console.log(error);
+    });
+  }
 
+  private refreshCartProducts(): void {
+    this.products = [];
+    this.totalPrice = 0;
+
+    this.database.getProductsInCart().subscribe(response => {
+      response.docs.forEach(value => {
+        let data = value.data();
+        let product: Product = {
+          id: value.id,
+          name: data.name,
+          description: data.description,
+          image: data.img,
+          price: data.price
+        };
+        this.products.push(product);
+        this.totalPrice += parseInt(product.price);
+      });
+    });
+  }
+
+  public getTotalPrice(): Number {
+    return this.totalPrice;
   }
 
   public getProducts(): Array<Product> {
     return this.products;
-  }
-
-  public getCartLength(): Number {
-    return this.products.length;
   }
 
 }

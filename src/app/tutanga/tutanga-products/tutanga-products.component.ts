@@ -29,6 +29,7 @@ export class TutangaProductsComponent implements OnInit {
       response.docs.forEach(value => {
         let data = value.data();
         let product: Product = {
+          id: value.id,
           name: data.name,
           description: data.description,
           image: data.img,
