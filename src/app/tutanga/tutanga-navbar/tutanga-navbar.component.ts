@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { TutangaLoginComponent } from '../modals/tutanga-login/tutanga-login.component';
+import { TutangaCartComponent } from '../tutanga-cart/tutanga-cart.component';
 
-import { AngularFireAuth } from "@angular/fire/auth";
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -14,25 +14,9 @@ import { AuthService } from '../services/auth.service';
 })
 export class TutangaNavbarComponent implements OnInit {
 
-  private logged: boolean;
-  private email: string;
+  constructor( private modalService: NgbModal, public authService: AuthService ) { }
 
-  constructor( private modalService: NgbModal, private authService: AuthService, private afAuth: AngularFireAuth ) { 
-    this.logged = false;
-    this.email = null;
-  }
-
-  ngOnInit(): void {
-    this.afAuth.user.subscribe(user => {
-      if ( user ) {
-        this.logged = true;
-        this.email = user.email;
-      } else {
-        this.logged = false;
-        this.email = null;
-      }
-    });
-  }
+  ngOnInit(): void { }
 
   public openLoginModal(): void {
     this.modalService.open(TutangaLoginComponent);
@@ -45,14 +29,6 @@ export class TutangaNavbarComponent implements OnInit {
 
   private handleModalTodoFormClose(): void {
     //alert('se ha cerrado el modal');
-  }
-
-  public isLogged(): boolean {
-    return this.logged;
-  }
-
-  public getEmail(): string {
-    return this.email;
   }
 
 }

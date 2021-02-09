@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+import { TutangaLoginComponent } from '../modals/tutanga-login/tutanga-login.component';
 
 import { DatabaseService } from '../services/database.service';
+import { AuthService } from '../services/auth.service';
 import { Product } from '../interfaces/product';
 
 @Component({
@@ -14,7 +18,7 @@ export class TutangaProductsComponent implements OnInit {
   private randomProduct: Product;
   private ready: boolean;
 
-  constructor( private database: DatabaseService ) { 
+  constructor( private modalService: NgbModal, private database: DatabaseService, private auth: AuthService ) { 
     this.products = [];
     this.ready = false;
   }
@@ -50,7 +54,15 @@ export class TutangaProductsComponent implements OnInit {
   }
 
   public addToCart(product: Product): void {
-    console.log(product.name);
+    if ( this.auth.isLogged() ) {
+      this.database.saveProductCart(product).then(resolve => {
+        console.log("Product added to the cart correctly!");
+      }).catch(error => {
+        console.log(error);
+      });
+    } else {
+      this.modalService.open(TutangaLoginComponent);
+    }
   }
 
 }

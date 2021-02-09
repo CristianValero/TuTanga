@@ -10,15 +10,18 @@ import { Router } from "@angular/router";
 export class AuthService {
 
   private logged: boolean;
+  private email: string;
 
   constructor( public afs: AngularFirestore, public afAuth: AngularFireAuth, public router: Router, public ngZone: NgZone ) {
     this.logged = false;
     this.afAuth.user.subscribe(user => {
       if ( user ) {
         this.logged = true;
+        this.email = user.email;
         //this.router.navigate(["/"]);
       } else {
         this.logged = false;
+        this.email = null;
       }
     });
    }
@@ -42,6 +45,10 @@ export class AuthService {
         reject(error.message);
        });
      });
+   }
+
+   public getEmail(): string {
+     return this.email;
    }
 
    public isLogged(): any {
