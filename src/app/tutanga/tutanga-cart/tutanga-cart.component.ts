@@ -19,9 +19,7 @@ export class TutangaCartComponent implements OnInit {
   constructor( private router: Router, private authService: AuthService, private database: DatabaseService ) {
     this.products = [];
     this.totalPrice = 0;
-  }
 
-  ngOnInit(): void {
     this.authService.isLogged().subscribe(value => {
       if ( !value ) {
         this.router.navigate(["/"]);
@@ -30,6 +28,8 @@ export class TutangaCartComponent implements OnInit {
       }
     });
   }
+
+  ngOnInit(): void {  }
 
   public deleteFromCart(product: Product) {
     this.database.deleteProductFromCart(product).then(resolve => {
