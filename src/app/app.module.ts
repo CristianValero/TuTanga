@@ -26,6 +26,7 @@ import { environment } from '../environments/environment';
 import { AuthService } from './tutanga/services/auth/auth.service';
 import { DatabaseService } from './tutanga/services/database/database.service';
 import { ProviderService } from './tutanga/services/provider/provider.service';
+import { TutangaDiscountComponent } from './tutanga/modals/tutanga-discount/tutanga-discount.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { ProviderService } from './tutanga/services/provider/provider.service';
     TutangaRegisterComponent,
     TutangaCartComponent,
     TutangaSuccessComponent,
-    TutangaProfileComponent
+    TutangaProfileComponent,
+    TutangaDiscountComponent
   ],
   imports: [
     BrowserModule,
