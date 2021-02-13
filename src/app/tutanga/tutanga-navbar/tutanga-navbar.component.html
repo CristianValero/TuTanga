@@ -13,6 +13,9 @@
                     <li class="nav-item">
                         <a class="nav-link" routerLink="/contacto">Contacto</a>
                     </li>
+                    <li *ngIf="isLogged()" class="nav-item">
+                        <a class="nav-link" routerLink="/perfil">Perfil</a>
+                    </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0 ">
                     <div class="input-group input-group-sm">

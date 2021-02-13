@@ -13,6 +13,7 @@ import { TutangaLoginComponent } from './tutanga/modals/tutanga-login/tutanga-lo
 import { TutangaRegisterComponent } from './tutanga/modals/tutanga-register/tutanga-register.component';
 import { TutangaCartComponent } from './tutanga/tutanga-cart/tutanga-cart.component';
 import { TutangaSuccessComponent } from './tutanga/modals/tutanga-success/tutanga-success.component';
+import { TutangaProfileComponent } from './tutanga/tutanga-profile/tutanga-profile.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -25,7 +26,6 @@ import { environment } from '../environments/environment';
 import { AuthService } from './tutanga/services/auth/auth.service';
 import { DatabaseService } from './tutanga/services/database/database.service';
 import { ProviderService } from './tutanga/services/provider/provider.service';
-import { TutangaProfileComponent } from './tutanga/tutanga-profile/tutanga-profile.component';
 
 
 @NgModule({
