@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { TutangaLoginComponent } from '../modals/tutanga-login/tutanga-login.component';
 import { TutangaSuccessComponent } from '../modals/tutanga-success/tutanga-success.component';
+import { TutangaDiscountComponent } from '../modals/tutanga-discount/tutanga-discount.component';
 
 import { DatabaseService } from '../services/database/database.service';
 import { AuthService } from '../services/auth/auth.service';
@@ -31,6 +32,8 @@ export class TutangaProductsComponent implements OnInit {
     this.auth.isLogged().subscribe(value => {
       this.logged = value;
     });
+
+    this.modalService.open(TutangaDiscountComponent);
   }
 
   ngOnInit(): void {
